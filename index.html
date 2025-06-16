@@ -3,169 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Módulo 1 - Encuesta Energética</title>
+  <meta name="theme-color" content="#008751"/>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>Módulo 3 - Inventario de Cargas Eléctricas</title>
 </head>
 <body>
   <main>
-    <h1>Módulo 1: Encuesta Energética</h1>
-    <form id="formulario">
-      
-<fieldset>
-  <legend>1. ¿Actualmente cuenta con acceso al servicio de energía eléctrica?</legend>
-  <label><input type="checkbox" name="p1" value="Sí, de forma continua"> Sí, de forma continua</label><br/>
-  <label><input type="checkbox" name="p1" value="Sí, pero con cortes frecuentes"> Sí, pero con cortes frecuentes</label><br/>
-  <label><input type="checkbox" name="p1" value="No cuenta con acceso al servicio"> No cuenta con acceso al servicio</label>
-</fieldset>
+    <h1>Módulo 3: Inventario de Cargas Eléctricas</h1>
+    <form id="formulario-carga">
 
-<fieldset>
-  <legend>2. ¿Con qué tipo de fuente de energía cuenta actualmente?</legend>
-  <label><input type="checkbox" name="p2" value="Red eléctrica pública"> Red eléctrica pública</label><br/>
-  <label><input type="checkbox" name="p2" value="Paneles solares autónomos"> Paneles solares autónomos</label><br/>
-  <label><input type="checkbox" name="p2" value="Planta diésel"> Planta diésel</label><br/>
-  <label><input type="checkbox" name="p2" value="No cuenta con fuente de energía"> No cuenta con fuente de energía</label><br/>
-  <label><input type="checkbox" name="p2" value="Otra"> Otra: <input type="text" name="p2_otro" disabled></label>
-</fieldset>
+      <p><strong>1. ¿Qué tipo de carga va a registrar?</strong><br><em>Tipo de pregunta: Selección única</em></p>
+      <select name="categoria" id="categoria" required>
+        <option value="">Seleccione...</option>
+        <option value="iluminacion">Iluminación</option>
+        <option value="refrigeracion">Refrigeración</option>
+        <option value="cocina">Cocina</option>
+        <option value="comunicaciones">Comunicaciones</option>
+        <option value="ventilacion">Ventilación</option>
+        <option value="produccion">Producción</option>
+        <option value="computacion">Computación</option>
+        <option value="bombeo">Bombeo / hidráulica</option>
+        <option value="otro">Otro</option>
+      </select>
 
-<fieldset>
-  <legend>3. ¿Cuáles de estos equipos utiliza en su vivienda?</legend>
-  <label><input type="checkbox" name="p3" value="Refrigerador o nevera"> Refrigerador o nevera</label><br/>
-  <label><input type="checkbox" name="p3" value="Congelador"> Congelador</label><br/>
-  <label><input type="checkbox" name="p3" value="Televisor"> Televisor</label><br/>
-  <label><input type="checkbox" name="p3" value="Equipo de sonido"> Equipo de sonido</label><br/>
-  <label><input type="checkbox" name="p3" value="Cargadores"> Cargadores</label><br/>
-  <label><input type="checkbox" name="p3" value="Computador"> Computador</label><br/>
-  <label><input type="checkbox" name="p3" value="Ventilador"> Ventilador</label><br/>
-  <label><input type="checkbox" name="p3" value="Bombillos"> Bombillos</label><br/>
-  <label><input type="checkbox" name="p3" value="Otro"> Otro: <input type="text" name="p3_otro" disabled></label>
-</fieldset>
+      <p><strong>2. Identifique la carga a inventariar.</strong><br><em>Tipo de pregunta: Selección única</em></p>
+      <select name="tipo" id="tipo" required></select>
 
-<fieldset>
-  <legend>4. ¿Qué tipo de combustible utiliza para cocinar?</legend>
-  <label><input type="checkbox" name="p4" value="Gas natural"> Gas natural</label><br/>
-  <label><input type="checkbox" name="p4" value="Gas propano"> Gas propano</label><br/>
-  <label><input type="checkbox" name="p4" value="Electricidad"> Electricidad</label><br/>
-  <label><input type="checkbox" name="p4" value="Leña"> Leña</label><br/>
-  <label><input type="checkbox" name="p4" value="Otro"> Otro: <input type="text" name="p4_otro" disabled></label>
-</fieldset>
+      <p><strong>3. Cantidad de equipos iguales</strong><br><em>Tipo de pregunta: Respuesta abierta</em></p>
+      <input type="number" name="cantidad" min="1" required>
 
-<fieldset>
-  <legend>5. ¿Qué otros recursos naturales utiliza?</legend>
-  <label><input type="checkbox" name="p5" value="Restos de cultivos (hojas, tallos, cáscaras...)"> Restos de cultivos (hojas, tallos, cáscaras...)</label><br/>
-  <label><input type="checkbox" name="p5" value="Desechos de animales (estiércol, etc.)"> Desechos de animales (estiércol, etc.)</label><br/>
-  <label><input type="checkbox" name="p5" value="Carbón"> Carbón</label><br/>
-  <label><input type="checkbox" name="p5" value="Otro"> Otro: <input type="text" name="p5_otro" disabled></label>
-</fieldset>
+      <p><strong>4. Horas promedio de uso diario</strong><br><em>Tipo de pregunta: Respuesta abierta</em></p>
+      <input type="number" name="horas" min="0" max="24" required>
 
-<fieldset>
-  <legend>6. ¿Ha tenido fallas frecuentes en el servicio de energía?</legend>
-  <label><input type="checkbox" name="p6" value="Sí"> Sí</label>
-  <label><input type="checkbox" name="p6" value="No"> No</label>
-</fieldset>
+      <p><strong>5. Días de uso al mes</strong><br><em>Tipo de pregunta: Respuesta abierta</em></p>
+      <input type="number" name="dias" min="0" max="31" required>
 
-<fieldset>
-  <legend>7. ¿Con qué frecuencia ocurre esto?</legend>
-  <label><input type="radio" name="p7" value="Diariamente"> Diariamente</label><br/>
-  <label><input type="radio" name="p7" value="Semanalmente"> Semanalmente</label><br/>
-  <label><input type="radio" name="p7" value="Mensualmente"> Mensualmente</label><br/>
-  <label><input type="radio" name="p7" value="Esporádicamente"> Esporádicamente</label>
-</fieldset>
+      <p><strong>6. Potencia estimada (W)</strong><br><em>Tipo de pregunta: Respuesta abierta</em></p>
+      <input type="number" name="potencia" min="1" required>
 
-<fieldset>
-  <legend>8. ¿Cuánto paga aproximadamente al mes por el servicio de energía?</legend>
-  <input type="text" name="p8" placeholder="Valor aproximado en pesos">
-</fieldset>
+      <p><strong>7. Estado físico del equipo</strong><br><em>Tipo de pregunta: Selección múltiple</em></p>
+      <fieldset>
+        <label><input type="checkbox" name="estado" value="En buen estado"> En buen estado</label><br>
+        <label><input type="checkbox" name="estado" value="Deteriorado"> Deteriorado</label><br>
+        <label><input type="checkbox" name="estado" value="Inseguro"> Inseguro</label><br>
+        <label><input type="checkbox" name="estado" value="Otro"> Otro</label>
+      </fieldset>
 
-<fieldset>
-  <legend>9. ¿Ha cambiado sus hábitos de consumo energético en el último año?</legend>
-  <label><input type="radio" name="p9" value="Sí"> Sí</label>
-  <label><input type="radio" name="p9" value="No"> No</label>
-</fieldset>
-
-<fieldset>
-  <legend>10. ¿Cuáles hábitos ha cambiado?</legend>
-  <textarea name="p10" rows="2" placeholder="Describa sus cambios de hábito..."></textarea>
-</fieldset>
-
-<fieldset>
-  <legend>11. ¿Considera que el servicio de energía es accesible económicamente para su familia?</legend>
-  <label><input type="radio" name="p11" value="Sí"> Sí</label>
-  <label><input type="radio" name="p11" value="No"> No</label>
-</fieldset>
-
-<fieldset>
-  <legend>12. ¿Ha recibido formación sobre el uso eficiente de la energía?</legend>
-  <label><input type="radio" name="p12" value="Sí"> Sí</label>
-  <label><input type="radio" name="p12" value="No"> No</label>
-</fieldset>
-
-<fieldset>
-  <legend>13. ¿Aplica prácticas de ahorro de energía en su hogar?</legend>
-  <label><input type="radio" name="p13" value="Sí"> Sí</label>
-  <label><input type="radio" name="p13" value="No"> No</label>
-</fieldset>
-
-<fieldset>
-  <legend>14. ¿Qué prácticas realiza?</legend>
-  <textarea name="p14" rows="2" placeholder="Describa las prácticas que realiza..."></textarea>
-</fieldset>
-
-<fieldset>
-  <legend>15. ¿Qué tan importante considera el acceso a la energía?</legend>
-  <label><input type="radio" name="p15" value="Muy importante"> Muy importante</label><br/>
-  <label><input type="radio" name="p15" value="Importante"> Importante</label><br/>
-  <label><input type="radio" name="p15" value="Poco importante"> Poco importante</label><br/>
-  <label><input type="radio" name="p15" value="Nada importante"> Nada importante</label>
-</fieldset>
-
-<fieldset>
-  <legend>16. ¿Participaría en un proyecto de solución comunitaria energética?</legend>
-  <label><input type="radio" name="p16" value="Sí"> Sí</label>
-  <label><input type="radio" name="p16" value="No"> No</label>
-</fieldset>
-
-<fieldset>
-  <legend>17. ¿Qué condiciones considera necesarias para participar en una solución energética comunitaria?</legend>
-  <textarea name="p17" rows="2" placeholder="Describa las condiciones..."></textarea>
-</fieldset>
-
-<fieldset>
-  <legend>18. ¿Qué fuentes naturales considera viables para producir energía en su comunidad?</legend>
-  <label><input type="checkbox" name="p18" value="Sol"> Sol</label>
-  <label><input type="checkbox" name="p18" value="Agua"> Agua</label>
-  <label><input type="checkbox" name="p18" value="Viento"> Viento</label>
-  <label><input type="checkbox" name="p18" value="Desechos orgánicos"> Desechos orgánicos</label>
-  <label><input type="checkbox" name="p18" value="Otra"> Otra: <input type="text" name="p18_otro" disabled></label>
-</fieldset>
-
-<fieldset>
-  <legend>19. ¿Qué hacen en su hogar cuando hay fallas del servicio de energía?</legend>
-  <textarea name="p19" rows="2" placeholder="Describa sus medidas en caso de cortes..."></textarea>
-</fieldset>
-
-<fieldset>
-  <legend>20. ¿Qué cambios le gustaría ver en su sistema energético?</legend>
-  <textarea name="p20" rows="2" placeholder="Ej: mejoras en el servicio, fuentes renovables..."></textarea>
-</fieldset>
-
-
-
-      <div class="acciones">
-        <button type="button" onclick="guardarRespuestas()">Guardar</button>
-        <button type="button" onclick="exportarDatos()">Exportar JSON</button>
+      <div class="buttons">
+        <button type="submit">Guardar carga</button>
+        <button type="button" id="finalizar">Finalizar y exportar</button>
       </div>
     </form>
+
+    <section id="lista-registros"></section>
   </main>
-  <script src="indexedDB.js" defer></script>
   <script src="main.js" defer></script>
-  <script src="export.js" defer></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js');
-      });
-    }
-  </script>
 </body>
 </html>
