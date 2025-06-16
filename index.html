@@ -12,7 +12,138 @@
   <main>
     <h1>Módulo 1: Encuesta Energética</h1>
     <form id="formulario" autocomplete="off">
-      <!-- Preguntas embebidas van aquí -->
+      
+<!-- PREGUNTAS MÓDULO 1 - ORGANIZADAS -->
+
+<fieldset>
+  <legend>1. ¿Qué tipo de vivienda habita?</legend>
+  <label><input type="radio" name="p1" value="Casa"> Casa</label>
+  <label><input type="radio" name="p1" value="Apartamento"> Apartamento</label>
+  <label><input type="radio" name="p1" value="Otro"> Otro <input type="text" name="p1_otro" placeholder="Especifique..." disabled></label>
+</fieldset>
+
+<fieldset>
+  <legend>2. ¿Cuál es el uso principal de la vivienda?</legend>
+  <label><input type="radio" name="p2" value="Residencial"> Residencial</label>
+  <label><input type="radio" name="p2" value="Comercial"> Comercial</label>
+  <label><input type="radio" name="p2" value="Mixto"> Mixto</label>
+</fieldset>
+
+<fieldset>
+  <legend>3. ¿Cuántas personas viven en la vivienda?</legend>
+  <input type="number" name="p3" min="1" placeholder="Ej: 4">
+</fieldset>
+
+<fieldset>
+  <legend>4. ¿Tiene acceso a energía eléctrica?</legend>
+  <label><input type="radio" name="p4" value="Sí"> Sí</label>
+  <label><input type="radio" name="p4" value="No"> No</label>
+</fieldset>
+
+<fieldset>
+  <legend>5. ¿Cuenta con paneles solares?</legend>
+  <label><input type="radio" name="p5" value="Sí"> Sí</label>
+  <label><input type="radio" name="p5" value="No"> No</label>
+</fieldset>
+
+<fieldset>
+  <legend>6. ¿Qué tipo de electrodomésticos utiliza?</legend>
+  <label><input type="checkbox" name="p6" value="Refrigerador"> Refrigerador</label>
+  <label><input type="checkbox" name="p6" value="TV"> TV</label>
+  <label><input type="checkbox" name="p6" value="Lavadora"> Lavadora</label>
+  <label><input type="checkbox" name="p6" value="Microondas"> Microondas</label>
+  <label><input type="checkbox" name="p6" value="Computador"> Computador</label>
+  <label><input type="checkbox" name="p6" value="Otro"> Otro <input type="text" name="p6_otro" placeholder="Especifique..." disabled></label>
+</fieldset>
+
+<fieldset>
+  <legend>7. ¿Con qué frecuencia utiliza los electrodomésticos?</legend>
+  <label><input type="radio" name="p7" value="Diario"> Diario</label>
+  <label><input type="radio" name="p7" value="Semanal"> Semanal</label>
+  <label><input type="radio" name="p7" value="Mensual"> Mensual</label>
+</fieldset>
+
+<fieldset>
+  <legend>8. ¿Cuál es su consumo promedio de energía mensual?</legend>
+  <input type="text" name="p8" placeholder="Ej: 100 kWh">
+</fieldset>
+
+<fieldset>
+  <legend>9. ¿Tiene hábitos de ahorro de energía?</legend>
+  <label><input type="radio" name="p9" value="Sí"> Sí</label>
+  <label><input type="radio" name="p9" value="No"> No</label>
+</fieldset>
+
+<fieldset>
+  <legend>10. ¿Qué prácticas de ahorro aplica?</legend>
+  <textarea name="p10" rows="2" placeholder="Describa sus prácticas..."></textarea>
+</fieldset>
+
+<fieldset>
+  <legend>11. ¿Conoce su consumo energético?</legend>
+  <label><input type="radio" name="p11" value="Sí"> Sí</label>
+  <label><input type="radio" name="p11" value="No"> No</label>
+</fieldset>
+
+<fieldset>
+  <legend>12. ¿Qué fuentes de energía utiliza?</legend>
+  <label><input type="checkbox" name="p12" value="Electricidad"> Electricidad</label>
+  <label><input type="checkbox" name="p12" value="Gas"> Gas</label>
+  <label><input type="checkbox" name="p12" value="Leña"> Leña</label>
+  <label><input type="checkbox" name="p12" value="Otro"> Otro <input type="text" name="p12_otro" placeholder="Especifique..." disabled></label>
+</fieldset>
+
+<fieldset>
+  <legend>13. ¿Qué hace con los residuos orgánicos?</legend>
+  <label><input type="checkbox" name="p13" value="Composta"> Composta</label>
+  <label><input type="checkbox" name="p13" value="Basura"> Basura</label>
+  <label><input type="checkbox" name="p13" value="Alimenta animales"> Alimenta animales</label>
+  <label><input type="checkbox" name="p13" value="Otro"> Otro <input type="text" name="p13_otro" placeholder="Especifique..." disabled></label>
+</fieldset>
+
+<fieldset>
+  <legend>14. ¿Usos prioritarios de la energía?</legend>
+  <label><input type="checkbox" name="p14" value="Iluminación"> Iluminación</label>
+  <label><input type="checkbox" name="p14" value="Refrigeración"> Refrigeración</label>
+  <label><input type="checkbox" name="p14" value="Cocinar"> Cocinar</label>
+  <label><input type="checkbox" name="p14" value="Entretenimiento"> Entretenimiento</label>
+  <label><input type="checkbox" name="p14" value="Otro"> Otro <input type="text" name="p14_otro" placeholder="Especifique..." disabled></label>
+</fieldset>
+
+<fieldset>
+  <legend>15. ¿Qué tan importante considera la energía?</legend>
+  <label><input type="radio" name="p15" value="Esencial"> Esencial</label>
+  <label><input type="radio" name="p15" value="Importante"> Importante</label>
+  <label><input type="radio" name="p15" value="Poco necesaria"> Poco necesaria</label>
+</fieldset>
+
+<fieldset>
+  <legend>16. ¿Participaría en una solución comunitaria?</legend>
+  <label><input type="radio" name="p16" value="Sí"> Sí</label>
+  <label><input type="radio" name="p16" value="Depende"> Depende</label>
+  <label><input type="radio" name="p16" value="No"> No</label>
+</fieldset>
+
+<fieldset>
+  <legend>17. ¿Qué condiciones considera necesarias?</legend>
+  <textarea name="p17" rows="2" placeholder="Describa sus condiciones..."></textarea>
+</fieldset>
+
+<fieldset>
+  <legend>18. ¿Qué recursos naturales podrían usarse?</legend>
+  <textarea name="p18" rows="2" placeholder="Ej: sol, agua, viento..."></textarea>
+</fieldset>
+
+<fieldset>
+  <legend>19. ¿Qué hacen cuando falla la energía?</legend>
+  <textarea name="p19" rows="2" placeholder="Describa su estrategia..."></textarea>
+</fieldset>
+
+<fieldset>
+  <legend>20. ¿Qué cambios le gustaría ver?</legend>
+  <textarea name="p20" rows="2" placeholder="Ej: energía más económica, paneles, etc."></textarea>
+</fieldset>
+
       <div class="acciones">
         <button type="button" onclick="guardarRespuestas()">Guardar</button>
         <button type="button" onclick="exportarDatos()">Exportar JSON</button>
