@@ -28,9 +28,7 @@
       </select>
 
       <p><strong>2. Identifique la carga a inventariar.</strong><br><em>Tipo de pregunta: Selección única</em></p>
-      <select name="tipo" id="tipo" required>
-        <option value="">Seleccione un tipo...</option>
-      </select>
+      <select name="tipo" id="tipo" required></select>
 
       <p><strong>3. Cantidad de equipos iguales</strong><br><em>Tipo de pregunta: Respuesta abierta</em></p>
       <input type="number" name="cantidad" min="1" required>
@@ -60,8 +58,6 @@
 
     <section id="lista-registros"></section>
   </main>
-  <script>
-    fetch('main.js').then(res => res.text()).then(code => eval(code));
-  </script>
+  <script src="main.js" defer></script>
 </body>
 </html>
