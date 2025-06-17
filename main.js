@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     'otro': ['Otro']
   };
 
+
+  
+
   categoria.addEventListener('change', () => {
     const seleccionada = categoria.value;
     tipo.innerHTML = '';
