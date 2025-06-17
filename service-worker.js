@@ -1,6 +1,7 @@
+
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open('modulo3-cache').then(cache => {
+    caches.open('modulo4-cache').then(cache => {
       return cache.addAll([
         './',
         './index.html',
