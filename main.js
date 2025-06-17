@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
+
+
   
 
   categoria.addEventListener('change', () => {
@@ -56,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function exportarJSON(data) {
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const 
+    a = document.createElement('a');
     a.href = url;
     a.download = 'inventario_modulo3.json';
     a.click();
