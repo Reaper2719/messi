@@ -1,22 +1,10 @@
-self.addEventListener("install", e => {
-  e.waitUntil(
-    caches.open("modulo1-cache").then(cache => {
-      return cache.addAll([
-        "index.html",
-        "style.css",
-        "main.js",
-        "indexedDB.js",
-        "export.js",
-        "manifest.json",
-        "icon-192.png",
-        "icon-512.png"
-      ]);
-    })
-  );
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open('modulo1-store').then(cache => cache.addAll([
+    './', './index.html', './styles.css', './main.js', './manifest.json'
+  ])));
+  self.skipWaiting();
 });
-
-self.addEventListener("fetch", e => {
-  e.respondWith(
-    caches.match(e.request).then(response => response || fetch(e.request))
-  );
+self.addEventListener('activate', e => self.clients.claim());
+self.addEventListener('fetch', e => {
+  e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
 });

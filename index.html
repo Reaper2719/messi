@@ -1,246 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="stylesheet" href="style.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="manifest.json">
-  
-  <title>Módulo 1 - Encuesta Energética</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 1 - Encuesta</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main>
-    <h1>Encuesta Energética - Módulo 1</h1>
-    <form id="formularioModulo" id="formulario">
+  <form id="modulo1-form">
+    <label>Pregunta 1:<input type="text" name="p1"></label><br><br>
+    <button type="submit">Guardar</button>
+    <button type="button" id="limpiar-btn">Limpiar datos</button>
+    <button type="button" id="exportar-btn">Exportar JSON</button>
 
-    <p><strong>Descripcion de la casa:</strong></p>
-    <textarea name="casa" rows="4" cols="50" placeholder="Coloque aqui la descripcion de la casa (Acorde en los tres modulos)"></textarea>
- 
+    <h2>Exportación de registros</h2>
+    <textarea id="json-output" style="width:100%;height:200px;" readonly></textarea>
+    <button type="button" id="copiar-json-btn">Copiar JSON</button>
 
-    
-    <fieldset>
-      <legend>1. ¿Está la vivienda conectada a la red eléctrica nacional?</legend>
-      <label><input type="radio" name="p1" value="Sí, conexión estable"> Sí, conexión estable</label>
-      <label><input type="radio" name="p1" value="Sí, pero con cortes frecuentes"> Sí, pero con cortes frecuentes</label>
-      <label><input type="radio" name="p1" value="No, fue desconectada"> No, fue desconectada</label>
-      <label><input type="radio" name="p1" value="No, nunca ha estado conectada"> No, nunca ha estado conectada</label>
-    </fieldset>
-
-
-<fieldset>
-  <legend>2. ¿Cómo obtiene actualmente energía eléctrica?</legend>
-  <label><input type="checkbox" name="p2" value="Planta o generador a combustible"> Planta o generador a combustible</label>
-  <label><input type="checkbox" name="p2" value="Paneles solares autónomos"> Paneles solares autónomos</label>
-  <label><input type="checkbox" name="p2" value="Sistema fotovoltaico comunitario"> Sistema fotovoltaico comunitario</label>
-  <label><input type="checkbox" name="p2" value="Baterías recargables"> Baterías recargables</label>
-  <label><input type="checkbox" name="p2" value="No cuenta con ninguna fuente"> No cuenta con ninguna fuente</label>
-  <label><input type="checkbox" name="p2" value="Otro"> Otro <input type="text" name="p2_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-<fieldset>
-  <legend>3. ¿Qué tipo de combustible utiliza?</legend>
-  <label><input type="checkbox" name="p3" value="Gasolina"> Gasolina</label>
-  <label><input type="checkbox" name="p3" value="Diésel"> Diésel</label>
-  <label><input type="checkbox" name="p3" value="Gas GLP"> Gas GLP</label>
-  <label><input type="checkbox" name="p3" value="Ninguna"> Ninguna</label>
-  <label><input type="checkbox" name="p3" value="Otro"> Otro <input type="text" name="p3_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-<fieldset>
-  <legend>4. ¿Qué tipo de energía usa para cocinar?</legend>
-  <label><input type="checkbox" name="p4" value="Energía eléctrica"> Energía eléctrica</label>
-  <label><input type="checkbox" name="p4" value="Gas GLP"> Gas GLP</label>
-  <label><input type="checkbox" name="p4" value="Leña"> Leña</label>
-  <label><input type="checkbox" name="p4" value="Otro"> Otro <input type="text" name="p4_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-<fieldset>
-  <legend>5. ¿Cuánto consume al mes de GLP?</legend>
-  <label><input type="radio" name="p5" value="1 pipa de 10 libras"> 1 pipa de 10 libras</label>
-  <label><input type="radio" name="p5" value="1 pipa de 20 libras"> 1 pipa de 20 libras</label>
-  <label><input type="radio" name="p5" value="1 pipa de 40 libras"> 1 pipa de 40 libras</label>
-  <label><input type="radio" name="p5" value="No usa gas"> No usa gas</label>
-  <label><input type="radio" name="p5" value="Otro"> Otro <input type="text" name="p5_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-
-
-
-
-<fieldset>
-  <legend>6. ¿Cuánto le cuesta al mes este gas?</legend>
-  <label><input type="radio" name="p6" value="$20.000 – $50.000"> $20.000 – $50.000</label>
-  <label><input type="radio" name="p6" value="$50.000 – $100.000"> $50.000 – $100.000</label>
-  <label><input type="radio" name="p6" value="Más de $100.000"> Más de $100.000</label>
-</fieldset>
-
-
-<fieldset>
-  <legend>7. ¿Quién administra el sistema de energía en la comunidad?</legend>
-  <label><input type="radio" name="p7" value="Cada familia"> Cada familia</label>
-  <label><input type="radio" name="p7" value="Junta comunitaria"> Junta comunitaria</label>
-  <label><input type="radio" name="p7" value="Asociación local"> Asociación local</label>
-  <label><input type="radio" name="p7" value="Organización externa"> Organización externa</label>
-  <label><input type="radio" name="p7" value="No aplica"> No aplica</label>
-</fieldset>
-
-<fieldset>
-  <legend>8. ¿Presenta problemas frecuentes con la energía?</legend>
-  <label><input type="checkbox" name="p8" value="Apagones o cortes"> Apagones o cortes</label>
-  <label><input type="checkbox" name="p8" value="Baja tensión"> Baja tensión</label>
-  <label><input type="checkbox" name="p8" value="Dañó electrodomésticos"> Dañó electrodomésticos</label>
-  <label><input type="checkbox" name="p8" value="Sobrecarga"> Sobrecarga</label>
-  <label><input type="checkbox" name="p8" value="No tiene problemas"> No tiene problemas</label>
-  <label><input type="checkbox" name="p8" value="Otro"> Otro <input type="text" name="p8_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-
-<fieldset>
-  <legend>9. ¿Cuánto le cuesta mensualmente la energía eléctrica?</legend>
-  <label><input type="radio" name="p9" value="$20.000 – $60.000"> $20.000 – $60.000</label>
-  <label><input type="radio" name="p9" value="$60.000 – $100.000"> $60.000 – $100.000</label>
-  <label><input type="radio" name="p9" value="$100.000 – $150.000"> $100.000 – $150.000</label>
-  <label><input type="radio" name="p9" value="Más de $150.000"> Más de $150.000</label>
-  <label><input type="radio" name="p9" value="No paga"> No paga</label>
-  <label><input type="radio" name="p9" value="No tiene servicio"> No tiene servicio</label>
-</fieldset>
-
-
-<fieldset>
-  <legend>10. ¿Cuánto le cuesta el combustible usado al mes?</legend>
-  <label><input type="radio" name="p10" value="$50.000 – $100.000"> $50.000 – $100.000</label>
-  <label><input type="radio" name="p10" value="$100.000 – $150.000"> $100.000 – $150.000</label>
-  <label><input type="radio" name="p10" value="$150.000 – $200.000"> $150.000 – $200.000</label>
-  <label><input type="radio" name="p10" value="Más de $200.000"> Más de $200.000</label>
-
-<fieldset>
-  <legend>11. ¿Cuál es su disposición frente a un sistema comunitario renovable?</legend>
-  <label><input type="radio" name="p11" value="Muy dispuesto"> Muy dispuesto</label>
-  <label><input type="radio" name="p11" value="Dispuesto con condiciones"> Dispuesto con condiciones</label>
-  <label><input type="radio" name="p11" value="No interesado"> No interesado</label>
-  <label><input type="radio" name="p11" value="Depende del costo"> Depende del costo</label>
-
-<fieldset>
-  <legend>12. ¿Cuáles de los siguientes residuos orgánicos se generan en mayor proporción?</legend>
-  <label><input type="checkbox" name="p12" value="Restos de cultivos"> Restos de cultivos</label>
-  <label><input type="checkbox" name="p12" value="Residuos de pescado y mariscos"> Residuos de pescado y mariscos</label>
-  <label><input type="checkbox" name="p12" value="Excrementos o purines de animales"> Excrementos o purines de animales</label>
-  <label><input type="checkbox" name="p12" value="Residuos de madera"> Residuos de madera</label>
-  <label><input type="checkbox" name="p12" value="Otro"> Otro <input type="text" name="p12_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-
-<fieldset>
-  <legend>13. ¿Qué uso o disposición le da habitualmente a los residuos orgánicos?</legend>
-  <label><input type="checkbox" name="p13" value="Se entierran o compostan para abono"> Se entierran o compostan para abono</label>
-  <label><input type="checkbox" name="p13" value="Se arrojan a basureros o botaderos abiertos"> Se arrojan a basureros o botaderos abiertos</label>
-  <label><input type="checkbox" name="p13" value="Se eliminan en el río, quebrada o mar"> Se eliminan en el río, quebrada o mar</label>
-  <label><input type="checkbox" name="p13" value="Se utilizan para alimentar animales"> Se utilizan para alimentar animales</label>
-  <label><input type="checkbox" name="p13" value="Se dejan acumular sin uso específico"> Se dejan acumular sin uso específico</label>
-  <label><input type="checkbox" name="p13" value="Se entregan a recicladores o programas comunitarios"> Se entregan a recicladores o programas comunitarios</label>
-  <label><input type="checkbox" name="p13" value="Otro"> Otro <input type="text" name="p13_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-<fieldset>
-  <legend>14. ¿Cuáles son los usos prioritarios de la energía eléctrica en su hogar?</legend>
-  <label><input type="checkbox" name="p14" value="Iluminación"> Iluminación</label>
-  <label><input type="checkbox" name="p14" value="Refrigeración de alimentos"> Refrigeración de alimentos</label>
-  <label><input type="checkbox" name="p14" value="Carga de celular u otros dispositivos"> Carga de celular u otros dispositivos</label>
-  <label><input type="checkbox" name="p14" value="Televisión y entretenimiento"> Televisión y entretenimiento</label>
-  <label><input type="checkbox" name="p14" value="Ventilación o aire acondicionado"> Ventilación o aire acondicionado</label>
-  <label><input type="checkbox" name="p14" value="Cocinar o calentar alimentos"> Cocinar o calentar alimentos</label>
-  <label><input type="checkbox" name="p14" value="Trabajo o actividades productivas"> Trabajo o actividades productivas</label>
-  <label><input type="checkbox" name="p14" value="Bombeo de agua"> Bombeo de agua</label>
-  <label><input type="checkbox" name="p14" value="Educación"> Educación</label>
-  <label><input type="checkbox" name="p14" value="Otro"> Otro <input type="text" name="p14_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-<fieldset>
-  <legend>15. ¿Qué tan importante considera que es contar con energía eléctrica para el bienestar de su comunidad?</legend>
-  <label><input type="radio" name="p15" value="Es esencial para mejorar la calidad de vida y las oportunidades"> Es esencial para mejorar la calidad de vida y las oportunidades</label>
-  <label><input type="radio" name="p15" value="Es importante, aunque se puede vivir con restricciones"> Es importante, aunque se puede vivir con restricciones</label>
-  <label><input type="radio" name="p15" value="Es útil, pero no es una necesidad prioritaria"> Es útil, pero no es una necesidad prioritaria</label>
-  <label><input type="radio" name="p15" value="No lo considero necesario"> No lo considero necesario</label>
-  <label><input type="radio" name="p15" value="No sabe / No responde"> No sabe / No responde</label>
-</fieldset>
-
-
-<fieldset>
-  <legend>16. ¿Estaría dispuesto a participar en un sistema comunitario de energía renovable?</legend>
-  <label><input type="radio" name="p16" value="Muy dispuesto"> Muy dispuesto</label>
-  <label><input type="radio" name="p16" value="Dispuesto con condiciones"> Dispuesto con condiciones</label>
-  <label><input type="radio" name="p16" value="No interesado"> No interesado</label>
-  <label><input type="radio" name="p16" value="Depende del costo"> Depende del costo</label>
-  <label><input type="radio" name="p16" value="Otro"> Otro <input type="text" name="p16_otro" placeholder="Especifique..."></label>
-</fieldset>
-
-
-<fieldset>
-  <legend>17. ¿Qué condiciones considera importantes para aceptar una solución comunitaria de energía renovable?</legend>
-  <textarea name="p17" rows="3" placeholder="Escriba su respuesta aquí..."></textarea>
-</fieldset>
-
-
-<fieldset>
-  <legend>18. ¿Qué recursos naturales cree usted que se podrían usar para generar energía en su comunidad?</legend>
-  <textarea name="p18" rows="3" placeholder="Ej: sol, agua, viento, residuos orgánicos..."></textarea>
-</fieldset>
-
-
-<fieldset>
-  <legend>19. ¿Qué soluciones han implementado usted o su comunidad cuando falla la energía?</legend>
-  <textarea name="p19" rows="3" placeholder="Escriba su respuesta aquí..."></textarea>
-</fieldset>
-
-
-<fieldset>
-  <legend>20. ¿Qué cambios le gustaría ver en el sistema energético de su comunidad?</legend>
-  <textarea name="p20" rows="3" placeholder="Escriba su respuesta aquí..."></textarea>
-</fieldset>
-
-
-
-<p>
-  <label>
-    <input type="checkbox" name="autorizacion_datos" required>
-    Acepto el tratamiento de mis datos personales según la Ley 1581 de 2012 y su decreto reglamentario 1377 de 2013.
-  </label>
-</p>
-
-      <div class="acciones">
-        <button type="button" onclick="guardarRespuestas()">Guardar</button>
-        <button type="button" onclick="exportarDatos()">Exportar JSON</button>
-      </div>
-    
-  <button id="botonLimpiar" type="button" style="margin-top: 20px;">
-    Limpiar datos
-  </button>
-
-
-<h2>Exportación de registros</h2>
-<textarea id="json-output" style="width:100%;height:250px;margin-top:10px;" readonly></textarea>
-<button type="button" id="copiar-json-btn" style="margin-top:10px;">Copiar JSON</button>
-
-
-<h2>Visualización manual de datos</h2>
-<button type="button" onclick="mostrarDatos()" style="background-color:#009664;color:white;padding:10px;border:none;border-radius:5px;margin-top:10px;">
-  Ver registros guardados
-</button>
-<pre id="output-registros" style="white-space: pre-wrap; background:#f4f4f4; padding:10px; border-radius:5px; margin-top:10px;"></pre>
-
-</form>
-  </main>
-  
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
-
-
-
-  <script src="indexedDB.js"></script>
+    <h2>Visualización manual de datos</h2>
+    <button type="button" onclick="mostrarDatos()">Ver registros guardados</button>
+    <pre id="output-registros" style="white-space: pre-wrap; background:#f4f4f4; padding:10px; border-radius:5px; margin-top:10px;"></pre>
+  </form>
   <script src="main.js"></script>
-  <script src="export.js"></script>
 </body>
 </html>

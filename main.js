@@ -1,63 +1,60 @@
+let db;
+const request = indexedDB.open("modulo1_db", 1);
+request.onerror = () => console.error("No se pudo abrir IndexedDB");
+request.onsuccess = (e) => db = e.target.result;
+request.onupgradeneeded = (e) => {
+  db = e.target.result;
+  db.createObjectStore("registros", { autoIncrement: true });
+};
 
-function limpiarFormulario() {
-  console.log("Limpieza activada");
-  const formulario = document.getElementById('formularioModulo');
-  if (formulario) {
-    formulario.reset();
-
-    const checkboxes = formulario.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => checkbox.checked = false);
-
-    const radios = formulario.querySelectorAll('input[type="radio"]');
-    radios.forEach(radio => radio.checked = false);
-
-    const textareas = formulario.querySelectorAll('textarea');
-    textareas.forEach(textarea => textarea.value = '');
-  }
-}
-
-function guardarRespuestas() {
-  const respuestas = {};
-  const inputs = document.querySelectorAll("input, textarea");
-  inputs.forEach(input => {
-    if (input.type === "radio" && input.checked) {
-      respuestas[input.name] = input.value;
-    } else if (input.type === "checkbox") {
-      if (!respuestas[input.name]) respuestas[input.name] = [];
-      if (input.checked) respuestas[input.name].push(input.value);
-    } else if (input.tagName === "TEXTAREA" || input.type === "text") {
-      if (input.value.trim() !== "") {
-        if (respuestas[input.name]) {
-          if (Array.isArray(respuestas[input.name])) {
-            respuestas[input.name].push(input.value);
-          } else {
-            respuestas[input.name] = [respuestas[input.name], input.value];
-          }
-        } else {
-          respuestas[input.name] = input.value;
-        }
-      }
+document.getElementById("modulo1-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  const data = {};
+  formData.forEach((value, key) => {
+    if (data[key]) {
+      if (!Array.isArray(data[key])) data[key] = [data[key]];
+      data[key].push(value);
+    } else {
+      data[key] = value;
     }
   });
-  localStorage.setItem("respuestas_modulo1", JSON.stringify(respuestas));
-  alert("Respuestas guardadas localmente.");
-}
-
-function exportarDatos() {
-  const data = localStorage.getItem("respuestas_modulo1");
-  if (!data) return alert("No hay datos guardados.");
-  const blob = new Blob([data], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "respuestas_modulo1.json";
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('botonLimpiar');
-  if (btn) {
-    btn.addEventListener('click', limpiarFormulario);
-  }
+  const tx = db.transaction("registros", "readwrite");
+  tx.objectStore("registros").add(data);
+  tx.oncomplete = () => {
+    alert("Registro guardado");
+    limpiarFormulario();
+    mostrarDatos();
+  };
 });
+
+document.getElementById("limpiar-btn").addEventListener("click", limpiarFormulario);
+function limpiarFormulario() {
+  document.getElementById("modulo1-form").reset();
+}
+
+document.getElementById("exportar-btn").addEventListener("click", mostrarDatos);
+document.getElementById("copiar-json-btn").addEventListener("click", () => {
+  const area = document.getElementById("json-output");
+  if (!area.value) return alert("No hay datos para copiar.");
+  area.select(); document.execCommand("copy");
+  alert("JSON copiado.");
+});
+
+window.mostrarDatos = function () {
+  const tx = db.transaction("registros", "readonly");
+  const store = tx.objectStore("registros");
+  store.getAll().onsuccess = (e) => {
+    const data = JSON.stringify(e.target.result, null, 2);
+    document.getElementById("json-output").value = data;
+    document.getElementById("output-registros").innerText = data;
+  };
+};
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(reg => console.log('[SW] registrado', reg))
+      .catch(err => console.error('[SW] error', err));
+  });
+};
